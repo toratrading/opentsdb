@@ -69,7 +69,7 @@ public final class TSDB {
   private static final String TAG_NAME_QUAL = "tagk";
   private static final short TAG_NAME_WIDTH = 3;
   private static final String TAG_VALUE_QUAL = "tagv";
-  private static final short TAG_VALUE_WIDTH = 3;
+  private static final short TAG_VALUE_WIDTH = 4;
 
   /** Client for the HBase cluster to use.  */
   final HBaseClient client;
