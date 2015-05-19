@@ -37,7 +37,7 @@ EOF`
 eval "$sh"  # Sets the timestamp and date variables.
 
 user=`whoami`
-host=`hostname`
+host=`uname -n`
 repo=`pwd`
 
 sh=`git rev-list --pretty=format:%h HEAD --max-count=1 \
