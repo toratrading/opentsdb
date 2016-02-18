@@ -21,6 +21,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -60,6 +61,7 @@ final class MetricForm extends HorizontalPanel implements Focusable {
   private final ListBox aggregators = new ListBox();
   private final ValidatedTextBox metric = new ValidatedTextBox();
   private final FlexTable tagtable = new FlexTable();
+  private final Anchor clone = new Anchor("(clone)");
 
   public MetricForm(final EventsHandler handler) {
     events_handler = handler;
@@ -356,6 +358,7 @@ final class MetricForm extends HorizontalPanel implements Focusable {
         hbox.add(fill_policy);
         vbox.add(hbox);
       }
+      vbox.add(clone);
       add(vbox);
     }
   }
@@ -757,4 +760,27 @@ final class MetricForm extends HorizontalPanel implements Focusable {
     metric.setFocus(focused);
   }
 
+  public void copyTagsFrom(MetricForm other) {
+      clearTags();
+
+      int tagCount = other.getNumTags();
+      boolean first = true;
+      for (int tagIndex = 0; tagIndex < tagCount; tagIndex++) {
+        String tagName = other.getTagName(tagIndex);
+        if (tagName == null || "".equals(tagName.trim())) {
+          continue;
+        }
+
+        if (!first) {
+          addTag(tagName, other.getTagValue(tagIndex));
+        } else {
+          setTag(0, tagName, other.getTagValue(tagIndex));
+          first = false;
+        }
+      }
+    }
+
+    public void setCloneHandler(ClickHandler handler) {
+      clone.addClickHandler(handler);
+    }
 }
