@@ -535,7 +535,7 @@ public class QueryUi implements EntryPoint, HistoryListener {
   }
 
   private MetricForm addMetricForm(final String label, final int item) {
-      addMetricForm(lave, item, null);
+      return addMetricForm(label, item, null);
   }
 
   private MetricForm addMetricForm(final String label, final int item, final MetricForm template) {

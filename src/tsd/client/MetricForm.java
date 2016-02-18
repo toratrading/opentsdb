@@ -772,9 +772,9 @@ final class MetricForm extends HorizontalPanel implements Focusable {
         }
 
         if (!first) {
-          addTag(tagName, other.getTagValue(tagIndex));
+          addTag(tagName, other.getTagValue(tagIndex), true);
         } else {
-          setTag(0, tagName, other.getTagValue(tagIndex));
+          setTag(0, tagName, other.getTagValue(tagIndex), true);
           first = false;
         }
       }
