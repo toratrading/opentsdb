@@ -363,7 +363,7 @@ final class MetricForm extends HorizontalPanel implements Focusable {
         hbox.add(fill_policy);
         vbox.add(hbox);
       }
-      vbos.add(clone);
+      vbox.add(clone);
       add(vbox);
     }
   }
