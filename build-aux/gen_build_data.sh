@@ -37,7 +37,7 @@ EOF`
 eval "$sh"  # Sets the timestamp and date variables.
 
 user=`whoami`
-host=`hostname`
+host=`uname -n`
 repo=`pwd`
 branch=`git branch | grep -h '\*.*' | awk '{print $2}'`
 
